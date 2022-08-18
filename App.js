@@ -1,5 +1,5 @@
 import{ useState }   from "react";
-import { StyleSheet, Text, View, TextInput, Button,ScrollView } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button,ScrollView ,Image} from "react-native";
 
 export default function App() {
   const [lienTextSaisie, setLientexteSaisie] = useState('');
@@ -20,7 +20,9 @@ export default function App() {
   return (
    
     <View style={styles.container}>
-       <Image source={require('./assets/icon.png')} style={styles.icon} />
+
+       <Image source={require('./assets/img.jpg')} style={styles.img} />
+
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="nouveau lien.."
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop:100,
   },
   inputLien: {
     flex: 1,
@@ -64,8 +67,8 @@ const styles = StyleSheet.create({
     borderColor:'green',
     borderWidth :2,
   },
-  icon:{
-    height:20,
-    width:20,
+ img: {
+    height:200,
+    width:200,
   }
 });
