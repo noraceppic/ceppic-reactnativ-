@@ -1,5 +1,6 @@
 import{ useState }   from "react";
-import { StyleSheet, Text, View, TextInput, Button,ScrollView ,Image} from "react-native";
+import { StyleSheet, Text, View, TextInput, Button ,Image,FlatList} from "react-native";
+
 
 export default function App() {
   const [lienTextSaisie, setLientexteSaisie] = useState('');
@@ -7,8 +8,12 @@ export default function App() {
 
   function ajoutLienHandler() {
    // console.log(lienTextSaisie);
-   setListeLiens([...listeliens,lienTextSaisie]);
-   setLientexteSaisie('');
+  /*  setListeLiens([...listeliens,lienTextSaisie]);
+   setLientexteSaisie(''); */
+   setListeLiens((currentListeLiens)=>[
+    ...listeliens,
+    {text:lienTextSaisie,id:Math.random().toString()},
+   ])
 
   }
 
@@ -34,9 +39,30 @@ export default function App() {
       </View>
       <View style={styles.LienContainer}>
         <Text> Liste des Liens ...</Text>
-        <ScrollView>
+        {/* <ScrollView>
           {listeliens.map((lien)=><Text key={lien}>{lien}</Text>)}
-        </ScrollView>
+        </ScrollView> */}
+{/* 
+        <FlatList 
+        data={listeliens}
+        renderItem
+        ={({item})=>(<Text>{item}</Text>)} /> */}
+        <FlatList
+          data={listeliens}
+          renderItem={(itemData)=>{
+            return(
+              
+              <View style={styles.lienItem} >
+                <Text> {itemData.item.text}</Text>
+
+              </View>
+                
+            )
+          }}
+          
+          />
+
+        
       </View>
     </View>
   );
@@ -70,5 +96,12 @@ const styles = StyleSheet.create({
  img: {
     height:200,
     width:200,
+  },
+  lienItem:{
+ backgroundColor:'#edcedc',
+ marginTop:20,
+ padding:8,
+ color:'#ggg'
+
   }
 });
