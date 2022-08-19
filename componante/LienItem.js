@@ -1,7 +1,9 @@
+
+import { StyleSheet, View, Text } from "react-native";
 export default function LienItem(props) {
     return(
         <View style={styles.lienItem} >
-                <Text> {itemData.item.text}</Text>
+                <Text style={styles.lienText}> {props.text}</Text>
 
               </View>
     )
@@ -13,5 +15,11 @@ lienItem:{
     padding:8,
     color:'#ggg'
    
+     },
+     lienText:{
+        color:'red'
      }
+
+
     })
+  
